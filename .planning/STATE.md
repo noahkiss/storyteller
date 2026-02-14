@@ -47,6 +47,12 @@ Recent decisions affecting current work:
 - Initial planning: SQLite for single-user persistence with no external dependencies
 - Initial planning: Dashboard UI for project management, not just chat interface
 - Initial planning: Rolling summary + outline context strategy for small windows
+- Phase 2 discussion: Text-first, markdown-driven interaction model — everything is a markdown file loaded into a reusable textarea
+- Phase 2 discussion: Split-screen layout — left pane (tabs/navigation), right pane (always the textarea)
+- Phase 2 discussion: AI behavior defined in editable markdown files (agent.md style), global + per-story
+- Phase 2 discussion: Version tracking via SQLite with auto-save, explicit save (Ctrl+S), and AI-triggered version points
+- Phase 2 discussion: Slice-of-life focus — small character casts, relationship-focused settings, no complex world-building
+- Phase 2 discussion: Desktop-first power-user web app
 
 ### Pending Todos
 
