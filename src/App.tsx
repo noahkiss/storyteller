@@ -4,6 +4,7 @@ import './App.css'
 import { initDatabase } from './services/db'
 import { SplitLayout } from './components/split-layout/SplitLayout'
 import { TabSystem, TabDefinition } from './components/tabs/TabSystem'
+import { EnhancedTextarea } from './components/textarea/EnhancedTextarea'
 
 const queryClient = new QueryClient()
 
@@ -58,7 +59,12 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <SplitLayout
         leftContent={<TabSystem tabs={tabs} />}
-        rightContent={<div style={{ padding: '20px' }}>Textarea</div>}
+        rightContent={
+          <EnhancedTextarea
+            contentId="scratch"
+            placeholder="Start writing your story..."
+          />
+        }
       />
     </QueryClientProvider>
   )

@@ -1,0 +1,21 @@
+.enhanced-textarea {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.enhanced-textarea__editor {
+  flex: 1;
+  overflow: auto;
+}
+
+.enhanced-textarea__editor .cm-editor {
+  height: 100%;
+}
+
+.enhanced-textarea__editor .cm-scroller {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+}
