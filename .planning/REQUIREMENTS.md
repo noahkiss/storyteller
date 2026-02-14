@@ -99,40 +99,40 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| LLM-01 | — | Pending |
-| LLM-02 | — | Pending |
-| LLM-03 | — | Pending |
-| SETUP-01 | — | Pending |
-| SETUP-02 | — | Pending |
-| SETUP-03 | — | Pending |
-| CTX-01 | — | Pending |
-| CTX-02 | — | Pending |
-| CTX-03 | — | Pending |
-| CTX-04 | — | Pending |
-| LIB-01 | — | Pending |
-| LIB-02 | — | Pending |
-| LIB-03 | — | Pending |
-| LIB-04 | — | Pending |
-| GEN-01 | — | Pending |
-| GEN-02 | — | Pending |
-| GEN-03 | — | Pending |
-| REV-01 | — | Pending |
-| REV-02 | — | Pending |
-| REV-03 | — | Pending |
-| REV-04 | — | Pending |
-| SER-01 | — | Pending |
-| SER-02 | — | Pending |
-| OUT-01 | — | Pending |
-| OUT-02 | — | Pending |
-| DASH-01 | — | Pending |
-| DASH-02 | — | Pending |
-| DASH-03 | — | Pending |
+| LLM-01 | Phase 1 | Pending |
+| LLM-02 | Phase 1 | Pending |
+| LLM-03 | Phase 5 | Pending |
+| SETUP-01 | Phase 2 | Pending |
+| SETUP-02 | Phase 2 | Pending |
+| SETUP-03 | Phase 2 | Pending |
+| CTX-01 | Phase 1 | Pending |
+| CTX-02 | Phase 1 | Pending |
+| CTX-03 | Phase 1 | Pending |
+| CTX-04 | Phase 1 | Pending |
+| LIB-01 | Phase 2 | Pending |
+| LIB-02 | Phase 2 | Pending |
+| LIB-03 | Phase 2 | Pending |
+| LIB-04 | Phase 2 | Pending |
+| GEN-01 | Phase 3 | Pending |
+| GEN-02 | Phase 3 | Pending |
+| GEN-03 | Phase 3 | Pending |
+| REV-01 | Phase 4 | Pending |
+| REV-02 | Phase 4 | Pending |
+| REV-03 | Phase 4 | Pending |
+| REV-04 | Phase 4 | Pending |
+| SER-01 | Phase 5 | Pending |
+| SER-02 | Phase 5 | Pending |
+| OUT-01 | Phase 4 | Pending |
+| OUT-02 | Phase 4 | Pending |
+| DASH-01 | Phase 3 | Pending |
+| DASH-02 | Phase 1 | Pending |
+| DASH-03 | Phase 3 | Pending |
 
 **Coverage:**
 - v1 requirements: 28 total
-- Mapped to phases: 0
-- Unmapped: 28 ⚠️
+- Mapped to phases: 28
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-02-13*
-*Last updated: 2026-02-13 after initial definition*
+*Last updated: 2026-02-13 after roadmap creation*
