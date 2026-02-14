@@ -1,0 +1,70 @@
+.generation-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #333;
+}
+
+.generation-controls .button-bar {
+  display: flex;
+  gap: 8px;
+}
+
+.generation-controls .btn {
+  padding: 8px 16px;
+  background: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: #e0e0e0;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.generation-controls .btn:hover:not(:disabled) {
+  background: #333;
+  border-color: #555;
+}
+
+.generation-controls .btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.generation-controls .btn-primary {
+  background: #4a9eff;
+  border-color: #4a9eff;
+  color: #fff;
+}
+
+.generation-controls .btn-primary:hover:not(:disabled) {
+  background: #3a8eef;
+}
+
+.generation-controls .btn-stop {
+  background: #fb923c;
+  border-color: #fb923c;
+  color: #fff;
+}
+
+.generation-controls .btn-stop:hover {
+  background: #ea8229;
+}
+
+.generation-controls .btn-small {
+  padding: 4px 12px;
+  font-size: 12px;
+}
+
+.generation-controls .error-message {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  background: rgba(251, 146, 60, 0.1);
+  border: 1px solid rgba(251, 146, 60, 0.3);
+  border-radius: 4px;
+  color: #fb923c;
+  font-size: 13px;
+}

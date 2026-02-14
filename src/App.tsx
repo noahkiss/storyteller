@@ -8,8 +8,10 @@ import { TabSystem, TabDefinition } from './components/tabs/TabSystem'
 import { EnhancedTextarea } from './components/textarea/EnhancedTextarea'
 import { ContextVisualization } from './components/context-viz/ContextVisualization'
 import { SettingsPanel } from './components/settings/SettingsPanel'
+import { GenerationWorkspace } from './components/generation/GenerationWorkspace'
 import { useCompressionLog } from './hooks/use-compression-log'
-import { createContextTier } from './services/context-engine'
+import { useGenerationStore } from './stores/generation-store'
+import { useUIStore } from './stores/ui-store'
 
 const queryClient = new QueryClient()
 
@@ -51,7 +53,7 @@ function App() {
     {
       id: 'generation',
       label: 'Generation',
-      content: <div>Generation workspace - coming soon</div>
+      content: <GenerationWorkspace />
     },
     {
       id: 'settings',
@@ -61,30 +63,37 @@ function App() {
   ]
 
   // Right pane content with vertical split: textarea above, context viz below
+  // Content varies by active tab
   const RightPaneContent = () => {
-    const { events, addEvent, clearEvents } = useCompressionLog();
-    // Future use: addEvent for compression, clearEvents for reset
-    void addEvent, clearEvents;
+    const { events } = useCompressionLog();
+    const { contextTiers, maxContextTokens, currentOutput } = useGenerationStore();
+    const { activeTab } = useUIStore();
 
-    // Mock data for demonstration - will be replaced with live data in Plan 06
-    const mockSegments = [
-      createContextTier('System Prompt', 'You are a creative writing assistant...', 100, '#4a9eff'),
-      createContextTier('Recent Text', 'The story begins with a mysterious figure...', 90, '#4ade80'),
-      createContextTier('History', 'Summary of previous chapters...', 50, '#fbbf24'),
-    ];
+    if (activeTab === 'settings') {
+      // Settings tab: show system prompt editor
+      return (
+        <EnhancedTextarea
+          contentId="system-prompt"
+          placeholder="Enter your system prompt..."
+        />
+      );
+    }
 
+    // Generation tab: show output (using EnhancedTextarea with key trick to force re-mount when output changes)
+    // TODO: Enhance EnhancedTextarea to support external value updates in Phase 2
     return (
       <Allotment vertical>
         <Allotment.Pane>
-          <EnhancedTextarea
-            contentId="scratch"
-            placeholder="Start writing your story..."
-          />
+          <div style={{ height: '100%', background: '#1a1a1a', padding: '12px', overflow: 'auto' }}>
+            <pre style={{ margin: 0, fontFamily: 'monospace', fontSize: '14px', lineHeight: 1.6, color: '#e0e0e0', whiteSpace: 'pre-wrap' }}>
+              {currentOutput || 'Generated text will appear here...'}
+            </pre>
+          </div>
         </Allotment.Pane>
         <Allotment.Pane preferredSize={200} minSize={150}>
           <ContextVisualization
-            segments={mockSegments}
-            maxTokens={1000}
+            segments={contextTiers}
+            maxTokens={maxContextTokens}
             compressionEvents={events}
           />
         </Allotment.Pane>

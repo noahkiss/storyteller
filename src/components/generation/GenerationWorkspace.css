@@ -1,0 +1,47 @@
+.generation-workspace {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.generation-workspace .prompt-section {
+  padding: 16px;
+  border-bottom: 1px solid #333;
+}
+
+.generation-workspace .section-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #a0a0a0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.generation-workspace .prompt-input {
+  width: 100%;
+  min-height: 120px;
+  max-height: 200px;
+  padding: 12px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 4px;
+  color: #e0e0e0;
+  font-family: 'SF Mono', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  resize: vertical;
+  transition: border-color 0.2s;
+}
+
+.generation-workspace .prompt-input:focus {
+  outline: none;
+  border-color: #4a9eff;
+}
+
+.generation-workspace .prompt-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

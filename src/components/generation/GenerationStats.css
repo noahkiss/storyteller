@@ -1,0 +1,18 @@
+.generation-stats {
+  display: flex;
+  gap: 16px;
+  padding: 8px 0;
+  font-size: 13px;
+  color: #a0a0a0;
+}
+
+.generation-stats .stat {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.generation-stats .stat strong {
+  color: #e0e0e0;
+  font-weight: 500;
+}
