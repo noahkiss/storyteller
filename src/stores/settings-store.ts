@@ -2,6 +2,11 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { LLMSettings, GenerationParams } from '@/types';
 
+// Runtime config injected by Docker entrypoint (env vars)
+const runtimeConfig = (window as any).__STORYTELLER_CONFIG__ as
+  | { baseURL?: string; apiKey?: string; model?: string }
+  | undefined;
+
 interface SettingsState extends LLMSettings {
   connectionStatus: 'disconnected' | 'connected' | 'error';
   connectionError: string | null;
@@ -16,10 +21,10 @@ interface SettingsState extends LLMSettings {
 export const useSettingsStore = create<SettingsState>()(
   persist(
     (set) => ({
-      // Default LLM connection settings
-      baseURL: 'http://localhost:1234/v1',
-      apiKey: '',
-      model: '',
+      // Default LLM connection settings (runtime config overrides defaults)
+      baseURL: runtimeConfig?.baseURL || 'http://localhost:1234/v1',
+      apiKey: runtimeConfig?.apiKey || '',
+      model: runtimeConfig?.model || '',
       connectionStatus: 'disconnected',
       connectionError: null,
       availableModels: [],

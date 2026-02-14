@@ -1,0 +1,9 @@
+node_modules
+dist
+.git
+.planning
+.gitignore
+*.md
+*.local
+.vscode
+.idea

@@ -1,0 +1,13 @@
+services:
+  storyteller:
+    image: ghcr.io/noahkiss/storyteller:latest
+    container_name: storyteller
+    ports:
+      - "8080:8080"
+    environment:
+      - STORYTELLER_LLM_BASE_URL=http://host.docker.internal:1234/v1
+      - STORYTELLER_LLM_API_KEY=
+      - STORYTELLER_LLM_MODEL=
+    volumes:
+      - ./config:/config:ro
+    restart: unless-stopped
