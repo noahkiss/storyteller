@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2026-02-13)
 ## Current Position
 
 Phase: 1 of 5 (Foundation + Context Engine)
-Plan: 2 of 6 in current phase
+Plan: 3 of 6 in current phase
 Status: Executing
-Last activity: 2026-02-14 — Completed plan 01-02 (Context Engine)
+Last activity: 2026-02-14 — Completed plan 01-03 (Core UI Layer)
 
-Progress: [███░░░░░░░] 33% (2/6 plans)
+Progress: [█████░░░░░] 50% (3/6 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 2
-- Average duration: 8 min
-- Total execution time: 0.27 hours
+- Total plans completed: 3
+- Average duration: 7 min
+- Total execution time: 0.35 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-foundation-context-engine | 2 | 16min | 8min |
+| 01-foundation-context-engine | 3 | 21min | 7min |
 
 **Recent Trend:**
-- Last 5 plans: 7min, 9min
-- Trend: Consistent velocity
+- Last 5 plans: 7min, 9min, 5min
+- Trend: Improving velocity
 
 *Updated after each plan completion*
 
@@ -60,6 +60,11 @@ Recent decisions affecting current work:
 - Plan 01-02: Use js-tiktoken for BPE token counting with o200k_base encoding (gpt-4o-mini default)
 - Plan 01-02: Greedy context packing algorithm (highest priority first) over optimal knapsack
 - Plan 01-02: No encoding instance caching — simpler implementation, optimization deferred
+- Plan 01-03: Allotment for split-pane layout with 30% left pane, resizable
+- Plan 01-03: Tab system uses Zustand ui-store for activeTab state
+- Plan 01-03: CodeMirror with markdown extension, no line numbers (not code)
+- Plan 01-03: Auto-save debounces for 2s, serializes concurrent saves, skips duplicates
+- Plan 01-03: TanStack Query polls version list every 3s for real-time updates
 
 ### Pending Todos
 
@@ -76,7 +81,7 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-14 (plan execution)
-Stopped at: Completed 01-02-PLAN.md - Context Engine
+Stopped at: Completed 01-03-PLAN.md - Core UI Layer
 Resume file: None
 
-**Next step:** Continue with plan 01-03 or review remaining phase 1 plans
+**Next step:** Continue with plan 01-04 or review remaining phase 1 plans
