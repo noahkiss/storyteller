@@ -1,0 +1,30 @@
+:root {
+  --bg-dark: #1a1a2e;
+  --bg-darker: #16161e;
+  --text-light: #e8e8e8;
+  --border-subtle: #2a2a3e;
+}
+
+.split-layout {
+  height: 100vh;
+  width: 100vw;
+  background: var(--bg-dark);
+  color: var(--text-light);
+}
+
+.split-layout__left,
+.split-layout__right {
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.split-layout__left {
+  background: var(--bg-darker);
+  border-right: 1px solid var(--border-subtle);
+}
+
+.split-layout__right {
+  background: var(--bg-dark);
+}

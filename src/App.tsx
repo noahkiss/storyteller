@@ -1,6 +1,11 @@
 import { useEffect, useState } from 'react'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import './App.css'
 import { initDatabase } from './services/db'
+import { SplitLayout } from './components/split-layout/SplitLayout'
+import { TabSystem, TabDefinition } from './components/tabs/TabSystem'
+
+const queryClient = new QueryClient()
 
 function App() {
   const [dbReady, setDbReady] = useState(false)
@@ -36,11 +41,26 @@ function App() {
     )
   }
 
+  const tabs: TabDefinition[] = [
+    {
+      id: 'generation',
+      label: 'Generation',
+      content: <div>Generation workspace - coming soon</div>
+    },
+    {
+      id: 'settings',
+      label: 'Settings',
+      content: <div>Settings - coming soon</div>
+    }
+  ]
+
   return (
-    <div>
-      <h1>Storyteller</h1>
-      <p>Database ready!</p>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <SplitLayout
+        leftContent={<TabSystem tabs={tabs} />}
+        rightContent={<div style={{ padding: '20px' }}>Textarea</div>}
+      />
+    </QueryClientProvider>
   )
 }
 
