@@ -1,0 +1,66 @@
+.generation-params {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.param-control {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.param-control label {
+  font-size: 13px;
+  color: #a0a0a0;
+}
+
+.slider-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.slider-group input[type="range"] {
+  flex: 1;
+  height: 4px;
+  background: #2a2a3e;
+  border-radius: 2px;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.slider-group input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #5c7cfa;
+  cursor: pointer;
+}
+
+.slider-group input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #5c7cfa;
+  cursor: pointer;
+  border: none;
+}
+
+.number-input {
+  width: 70px;
+  padding: 4px 8px;
+  background: #16161e;
+  border: 1px solid #2a2a3e;
+  border-radius: 4px;
+  color: #e8e8e8;
+  font-size: 12px;
+  text-align: right;
+}
+
+.number-input:focus {
+  outline: none;
+  border-color: #5c7cfa;
+}

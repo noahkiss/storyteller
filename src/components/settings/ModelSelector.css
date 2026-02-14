@@ -1,0 +1,28 @@
+.model-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.model-selector .form-group {
+  margin-bottom: 0;
+}
+
+.refresh-btn {
+  align-self: flex-start;
+}
+
+.btn-text {
+  background: none;
+  border: none;
+  color: #5c7cfa;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 4px 0;
+  text-decoration: underline;
+  align-self: flex-start;
+}
+
+.btn-text:hover {
+  color: #4c6eef;
+}

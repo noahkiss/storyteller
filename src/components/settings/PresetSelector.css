@@ -1,0 +1,85 @@
+.preset-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.preset-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.preset-header label {
+  font-size: 13px;
+  color: #a0a0a0;
+}
+
+.preset-create {
+  display: flex;
+  gap: 8px;
+}
+
+.preset-create input {
+  flex: 1;
+  padding: 6px 8px;
+  background: #16161e;
+  border: 1px solid #2a2a3e;
+  border-radius: 4px;
+  color: #e8e8e8;
+  font-size: 12px;
+}
+
+.preset-create input:focus {
+  outline: none;
+  border-color: #5c7cfa;
+}
+
+.preset-create .btn-primary {
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
+.preset-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.preset-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.preset-name {
+  flex: 1;
+  padding: 6px 8px;
+  background: #2a2a3e;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #e8e8e8;
+  font-size: 12px;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.preset-name:hover {
+  background: #3a3a4e;
+  border-color: #5c7cfa;
+}
+
+.preset-delete {
+  padding: 4px 8px;
+  background: none;
+  border: none;
+  color: #f87171;
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.preset-delete:hover {
+  color: #ef4444;
+}

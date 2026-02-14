@@ -1,0 +1,165 @@
+.settings-panel {
+  padding: 16px;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.settings-section {
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #2a2a3e;
+}
+
+.settings-section:last-child {
+  border-bottom: none;
+}
+
+.settings-section h3 {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  color: #e8e8e8;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.section-header h3 {
+  margin: 0;
+}
+
+.expand-toggle {
+  background: none;
+  border: none;
+  color: #e8e8e8;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.expand-toggle:hover {
+  color: #5c7cfa;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: #a0a0a0;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group select {
+  width: 100%;
+  padding: 8px;
+  background: #16161e;
+  border: 1px solid #2a2a3e;
+  border-radius: 4px;
+  color: #e8e8e8;
+  font-size: 13px;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #5c7cfa;
+}
+
+.password-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-input input {
+  flex: 1;
+  padding-right: 40px;
+}
+
+.toggle-visibility {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+}
+
+.button-group {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-primary {
+  background: #5c7cfa;
+  color: #fff;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #4c6eef;
+}
+
+.btn-primary:disabled {
+  background: #3a4a7a;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: #2a2a3e;
+  color: #e8e8e8;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #3a3a4e;
+}
+
+.btn-secondary:disabled {
+  background: #1a1a2e;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.generate-result {
+  margin-top: 12px;
+  padding: 12px;
+  background: #16161e;
+  border: 1px solid #2a2a3e;
+  border-radius: 4px;
+}
+
+.generate-result pre {
+  margin: 0;
+  color: #e8e8e8;
+  font-size: 12px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.help-text {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #666;
+  line-height: 1.4;
+}

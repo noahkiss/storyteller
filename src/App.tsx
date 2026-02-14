@@ -7,6 +7,7 @@ import { SplitLayout } from './components/split-layout/SplitLayout'
 import { TabSystem, TabDefinition } from './components/tabs/TabSystem'
 import { EnhancedTextarea } from './components/textarea/EnhancedTextarea'
 import { ContextVisualization } from './components/context-viz/ContextVisualization'
+import { SettingsPanel } from './components/settings/SettingsPanel'
 import { useCompressionLog } from './hooks/use-compression-log'
 import { createContextTier } from './services/context-engine'
 
@@ -55,7 +56,7 @@ function App() {
     {
       id: 'settings',
       label: 'Settings',
-      content: <div>Settings - coming soon</div>
+      content: <SettingsPanel />
     }
   ]
 
