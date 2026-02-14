@@ -80,6 +80,14 @@ Recent decisions affecting current work:
 
 None yet.
 
+### Infrastructure
+
+- **GitHub repo:** https://github.com/noahkiss/storyteller (public)
+- **Docker image:** `ghcr.io/noahkiss/storyteller` (built via GitHub Actions on version tags)
+- **Versioning:** semver, tag after each phase completion (v0.1.0 = Phase 1)
+- **Post-phase checklist:** bump version in package.json, tag, push — see AGENTS.md for full steps
+- **Runtime config:** env vars `STORYTELLER_LLM_BASE_URL`, `STORYTELLER_LLM_API_KEY`, `STORYTELLER_LLM_MODEL` injected at container startup
+
 ### Blockers/Concerns
 
 **Phase 1 complexity:** Context management is the critical path and most complex component. Research identified this needs deep investigation of context packing algorithms, multi-model tokenization, and summarization quality. Consider `/gsd:research-phase 1` before planning if additional architectural clarity needed.
