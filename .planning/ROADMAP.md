@@ -30,10 +30,15 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. System maintains rolling summaries (recent verbatim + compressed history) across generation calls
   4. User can visualize what context is packed into each generation call with token budget breakdown
   5. System prevents context overflow by compressing historical content at multiple granularity levels
-**Plans**: TBD
+**Plans**: 6 plans
 
 Plans:
-- [ ] TBD (set during `/gsd:plan-phase 1`)
+- [ ] 01-01-PLAN.md — Project scaffold + database layer (Vite, SQLite WASM, Zustand stores)
+- [ ] 01-02-PLAN.md — Context engine TDD (token counting, context packing, hierarchical compression)
+- [ ] 01-03-PLAN.md — Core UI layout + textarea (Allotment split-screen, tab system, CodeMirror textarea with version nav)
+- [ ] 01-04-PLAN.md — LLM client + settings UI (OpenAI SDK wrapper, connection testing, generation parameters, presets)
+- [ ] 01-05-PLAN.md — Context visualization (stacked bar, itemized list, text inspection, compression log)
+- [ ] 01-06-PLAN.md — Generation workspace + integration (streaming output, prompt history, full wiring, human verification)
 
 ### Phase 2: Creative Library + Story Setup
 **Goal**: Enable structured story planning with reusable creative assets and AI-assisted outline development
@@ -103,7 +108,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation + Context Engine | 0/TBD | Not started | - |
+| 1. Foundation + Context Engine | 0/6 | Planned | - |
 | 2. Creative Library + Story Setup | 0/TBD | Not started | - |
 | 3. Generation + Dashboard | 0/TBD | Not started | - |
 | 4. Revision + Export | 0/TBD | Not started | - |
