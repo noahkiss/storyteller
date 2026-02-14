@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2026-02-13)
 ## Current Position
 
 Phase: 1 of 5 (Foundation + Context Engine)
-Plan: 5 of 6 in current phase
+Plan: 6 of 6 in current phase
 Status: Executing
-Last activity: 2026-02-14 — Completed plan 01-05 (Context Visualization)
+Last activity: 2026-02-14 — Completed plan 01-04 (LLM Integration Layer)
 
-Progress: [████████░░] 83% (5/6 plans)
+Progress: [█████████░] 100% (6/6 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5
-- Average duration: 6 min
-- Total execution time: 0.52 hours
+- Total plans completed: 6
+- Average duration: 7 min
+- Total execution time: 0.67 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-foundation-context-engine | 5 | 31min | 6min |
+| 01-foundation-context-engine | 6 | 40min | 7min |
 
 **Recent Trend:**
-- Last 5 plans: 7min, 9min, 5min, 7min, 5min
-- Trend: Consistent velocity
+- Last 5 plans: 9min, 5min, 7min, 5min, 9min
+- Trend: Consistent velocity (6-9 min per plan)
 
 *Updated after each plan completion*
 
@@ -65,6 +65,12 @@ Recent decisions affecting current work:
 - Plan 01-03: CodeMirror with markdown extension, no line numbers (not code)
 - Plan 01-03: Auto-save debounces for 2s, serializes concurrent saves, skips duplicates
 - Plan 01-03: TanStack Query polls version list every 3s for real-time updates
+- Plan 01-04: Use OpenAI SDK with dangerouslyAllowBrowser: true (acceptable for localhost connections)
+- Plan 01-04: Chunk buffering at ~50 chars for smooth append performance
+- Plan 01-04: Two-level connection testing (quick test + full pipeline test)
+- Plan 01-04: Model selector auto-discovers from /v1/models with manual fallback
+- Plan 01-04: Generation parameters stored in settings-store with Zustand persist
+- Plan 01-04: Collapsible generation parameters section (collapsed by default)
 - Plan 01-05: Vertical split in right pane (textarea above, context viz below)
 - Plan 01-05: Context bar with color-coded segments (blue system, green recent, amber compressed)
 - Plan 01-05: Compression log polls every 5s, limited to last 50 events
@@ -85,7 +91,7 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-14 (plan execution)
-Stopped at: Completed 01-05-PLAN.md - Context Visualization
+Stopped at: Completed 01-04-PLAN.md - LLM Integration Layer
 Resume file: None
 
-**Next step:** Continue with plan 01-06 (final plan in phase 1) or review phase completion
+**Next step:** Phase 1 complete (6/6 plans done). Note: Plan 01-06 does not exist - phase complete. Review phase completion or continue to Phase 2.
