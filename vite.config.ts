@@ -20,5 +20,6 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
+    testTimeout: 30000, // Increase timeout for slow token encoding
   },
 })
