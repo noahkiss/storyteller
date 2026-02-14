@@ -1,0 +1,107 @@
+.context-item-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.expand-toggle {
+  background: none;
+  border: 1px solid #2a2a3e;
+  color: #e8e8e8;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s ease;
+  width: fit-content;
+}
+
+.expand-toggle:hover {
+  background: #2a2a3e;
+}
+
+.context-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.context-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.color-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.label-text {
+  font-size: 13px;
+  color: #e8e8e8;
+  font-weight: 500;
+}
+
+.item-stats {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.token-count {
+  color: #a0a0a0;
+  font-family: 'SF Mono', 'Menlo', 'Monaco', 'Courier New', monospace;
+}
+
+.percentage {
+  color: #888;
+}
+
+.inspect-button {
+  background: none;
+  border: 1px solid #2a2a3e;
+  color: #5c7cfa;
+  padding: 4px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 11px;
+  transition: all 0.2s ease;
+}
+
+.inspect-button:hover {
+  background: #2a2a3e;
+  border-color: #5c7cfa;
+}
+
+.item-progress {
+  width: 100%;
+  height: 4px;
+  background: #2a2a3e;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  transition: width 0.3s ease;
+}
