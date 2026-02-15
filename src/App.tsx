@@ -79,16 +79,15 @@ function App() {
       );
     }
 
-    // Generation tab: show output (using EnhancedTextarea with key trick to force re-mount when output changes)
-    // TODO: Enhance EnhancedTextarea to support external value updates in Phase 2
+    // Generation tab: show output with EnhancedTextarea for inline editing
     return (
       <Allotment vertical>
         <Allotment.Pane>
-          <div style={{ height: '100%', background: '#1a1a1a', padding: '12px', overflow: 'auto' }}>
-            <pre style={{ margin: 0, fontFamily: 'monospace', fontSize: '14px', lineHeight: 1.6, color: '#e0e0e0', whiteSpace: 'pre-wrap' }}>
-              {currentOutput || 'Generated text will appear here...'}
-            </pre>
-          </div>
+          <EnhancedTextarea
+            contentId="generation-output"
+            externalValue={currentOutput}
+            placeholder="Generated text will appear here..."
+          />
         </Allotment.Pane>
         <Allotment.Pane preferredSize={200} minSize={150}>
           <ContextVisualization
