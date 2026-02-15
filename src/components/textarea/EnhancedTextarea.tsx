@@ -1,4 +1,4 @@
-import { useCallback, useState, useEffect } from 'react';
+import { useCallback, useState, useEffect, useRef } from 'react';
 import CodeMirror from '@uiw/react-codemirror';
 import { markdown } from '@codemirror/lang-markdown';
 import { keymap } from '@codemirror/view';
@@ -10,7 +10,9 @@ import './EnhancedTextarea.css';
 interface EnhancedTextareaProps {
   contentId: string;
   initialValue?: string;
+  externalValue?: string;
   onChange?: (value: string) => void;
+  onEdit?: (value: string) => void;
   readOnly?: boolean;
   placeholder?: string;
 }
@@ -18,11 +20,14 @@ interface EnhancedTextareaProps {
 export function EnhancedTextarea({
   contentId,
   initialValue = '',
+  externalValue,
   onChange,
+  onEdit,
   readOnly = false,
   placeholder = 'Start typing...'
 }: EnhancedTextareaProps) {
   const [value, setValue] = useState(initialValue);
+  const userEditedRef = useRef(false);
   const {
     currentVersion,
     versionCount,
@@ -43,13 +48,23 @@ export function EnhancedTextarea({
     }
   }, [isViewingHistory, currentVersion]);
 
+  // Sync from externalValue when in controlled mode
+  useEffect(() => {
+    if (externalValue !== undefined && !isViewingHistory && !userEditedRef.current) {
+      setValue(externalValue);
+      userEditedRef.current = false;
+    }
+  }, [externalValue, isViewingHistory]);
+
   const handleChange = useCallback((newValue: string) => {
     // Only allow edits when not viewing history
     if (!isViewingHistory) {
       setValue(newValue);
+      userEditedRef.current = true;
       onChange?.(newValue);
+      onEdit?.(newValue);
     }
-  }, [isViewingHistory, onChange]);
+  }, [isViewingHistory, onChange, onEdit]);
 
   const handleManualSave = useCallback(async () => {
     await saveManualVersion(value);
