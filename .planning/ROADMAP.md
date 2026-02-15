@@ -30,7 +30,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. System maintains rolling summaries (recent verbatim + compressed history) across generation calls
   4. User can visualize what context is packed into each generation call with token budget breakdown
   5. System prevents context overflow by compressing historical content at multiple granularity levels
-**Plans**: 6 plans
+**Plans**: 8 plans
 
 Plans:
 - [ ] 01-01-PLAN.md — Project scaffold + database layer (Vite, SQLite WASM, Zustand stores)
@@ -39,6 +39,8 @@ Plans:
 - [ ] 01-04-PLAN.md — LLM client + settings UI (OpenAI SDK wrapper, connection testing, generation parameters, presets)
 - [ ] 01-05-PLAN.md — Context visualization (stacked bar, itemized list, text inspection, compression log)
 - [ ] 01-06-PLAN.md — Generation workspace + integration (streaming output, prompt history, full wiring, human verification)
+- [ ] 01-07-PLAN.md — Gap closure: EnhancedTextarea for generation output (replace pre element, enable inline editing + version tracking)
+- [ ] 01-08-PLAN.md — Gap closure: Update success criterion #5 wording (prioritized tier truncation, not multi-level compression)
 
 ### Phase 2: Creative Library + Story Setup
 **Goal**: Enable structured story planning with reusable creative assets and AI-assisted outline development
@@ -115,7 +117,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation + Context Engine | 0/6 | Planned | - |
+| 1. Foundation + Context Engine | 0/8 | Planned | - |
 | 2. Creative Library + Story Setup | 0/8 | Planned | - |
 | 3. Generation + Dashboard | 0/TBD | Not started | - |
 | 4. Revision + Export | 0/TBD | Not started | - |
