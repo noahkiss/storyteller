@@ -29,7 +29,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. User can generate text from a prompt and see streaming token output
   3. System maintains rolling summaries (recent verbatim + compressed history) across generation calls
   4. User can visualize what context is packed into each generation call with token budget breakdown
-  5. System prevents context overflow by compressing historical content at multiple granularity levels
+  5. System prevents context overflow by prioritized tier truncation (multi-level compression in Phase 3)
 **Plans**: 8 plans
 
 Plans:
