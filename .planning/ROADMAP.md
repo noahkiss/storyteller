@@ -51,10 +51,17 @@ Plans:
   4. User can input a premise and refine it through back-and-forth conversation with the AI
   5. User can create and edit a chapter/scene outline with beat-level structure
   6. Relevant library items (characters, settings, themes) automatically inject into generation context
-**Plans**: TBD
+**Plans**: 8 plans
 
 Plans:
-- [ ] TBD (set during `/gsd:plan-phase 2`)
+- [ ] 02-01-PLAN.md — Schema extension, TypeScript types, dependencies, markdown service
+- [ ] 02-02-PLAN.md — Character and setting library (stores, CRUD hooks, tab UI)
+- [ ] 02-03-PLAN.md — Story management with copy-on-write forking and three-way merge
+- [ ] 02-04-PLAN.md — Outline editor with automatic library reference detection
+- [ ] 02-05-PLAN.md — AI config management and template system
+- [ ] 02-06-PLAN.md — AI conversation service and premise refinement workspace
+- [ ] 02-07-PLAN.md — AI expansion markers (CodeMirror highlighting + marker processing)
+- [ ] 02-08-PLAN.md — Integration wiring and end-to-end verification
 
 ### Phase 3: Generation + Dashboard
 **Goal**: Complete core story generation workflow with scene-by-scene progression and project management interface
@@ -109,7 +116,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation + Context Engine | 0/6 | Planned | - |
-| 2. Creative Library + Story Setup | 0/TBD | Not started | - |
+| 2. Creative Library + Story Setup | 0/8 | Planned | - |
 | 3. Generation + Dashboard | 0/TBD | Not started | - |
 | 4. Revision + Export | 0/TBD | Not started | - |
 | 5. Series + Polish | 0/TBD | Not started | - |
