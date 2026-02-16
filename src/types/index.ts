@@ -99,6 +99,7 @@ export interface StoryItem {
   forked_from_version: number;
   content: string;
   has_local_changes: boolean;
+  base_content?: string; // Original library content at fork time (for three-way merge)
   created_at: number;
   updated_at: number;
 }
