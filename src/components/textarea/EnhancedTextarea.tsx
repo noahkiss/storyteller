@@ -4,6 +4,7 @@ import { markdown } from '@codemirror/lang-markdown';
 import { keymap } from '@codemirror/view';
 import { useVersionHistory } from '@/hooks/use-version-history';
 import { useAutoSave } from '@/hooks/use-auto-save';
+import { markerHighlighting } from '@/extensions/codemirror/marker-highlighting';
 import { VersionNav } from './VersionNav';
 import './EnhancedTextarea.css';
 
@@ -108,6 +109,7 @@ export function EnhancedTextarea({
           extensions={[
             markdown(),
             customKeymap,
+            markerHighlighting,
           ]}
           theme="dark"
           height="100%"
