@@ -5,33 +5,34 @@
 See: .planning/PROJECT.md (updated 2026-02-13)
 
 **Core value:** Produce coherent, outline-faithful stories from small local LLMs by being smart about context management
-**Current focus:** Phase 1 - Foundation + Context Engine
+**Current focus:** Phase 2 - Creative Library + Story Setup
 
 ## Current Position
 
-Phase: 1 of 5 (Foundation + Context Engine)
-Plan: 8 of 8 in current phase
-Status: Complete
-Last activity: 2026-02-15 — Completed plan 01-07 (Generation Output Editing)
+Phase: 2 of 5 (Creative Library + Story Setup)
+Plan: 1 of 7 in current phase
+Status: In Progress
+Last activity: 2026-02-16 — Completed plan 02-01 (Database, Types, and Markdown Service)
 
-Progress: [██████████] 100% (8/8 plans)
+Progress: [██░░░░░░░░] 14% (1/7 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 8
+- Total plans completed: 9
 - Average duration: 6 min
-- Total execution time: 0.79 hours
+- Total execution time: 0.84 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-foundation-context-engine | 8 | 47min | 6min |
+| 02-creative-library-story-setup | 1 | 3min | 3min |
 
 **Recent Trend:**
-- Last 5 plans: 5min, 9min, 1min, 1min, 2min
-- Trend: Gap closure plans significantly faster (1-2 min vs 6-9 min avg)
+- Last 5 plans: 9min, 1min, 1min, 2min, 3min
+- Trend: Phase 2 starts efficiently, foundation plans remain quick
 
 *Updated after each plan completion*
 
@@ -77,6 +78,11 @@ Recent decisions affecting current work:
 - Plan 01-05: Text inspector uses react-markdown modal with Escape key support
 - [Phase 01]: Use ref to track user edits vs external updates for seamless streaming to editing transition
 - [Phase 01]: onEdit callback separate from onChange to distinguish user-initiated edits from external value syncs
+- Plan 02-01: Use gray-matter for frontmatter parsing (CommonJS module with ESM interop)
+- Plan 02-01: Seed default templates and AI config on first database init (like presets)
+- Plan 02-01: Store markdown content with frontmatter as single TEXT column in database
+- Plan 02-01: Use TEXT PRIMARY KEY for all new Phase 2 tables (UUID-style IDs)
+- Plan 02-01: Add base_content column to story_items for 3-way merge support
 
 ### Pending Todos
 
@@ -100,8 +106,8 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-02-15 (plan execution)
-Stopped at: Completed 01-07-PLAN.md - Generation Output Editing
+Last session: 2026-02-16 (plan execution)
+Stopped at: Completed 02-01-PLAN.md - Database, Types, and Markdown Service
 Resume file: None
 
-**Next step:** Phase 1 complete (8/8 plans done). All plans complete. Ready for phase verification and completion.
+**Next step:** Continue Phase 2 with plan 02-02 (Library UI).
