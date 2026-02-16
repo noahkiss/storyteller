@@ -1,0 +1,128 @@
+.outline-editor {
+  padding: 16px;
+  background: #1a1a2e;
+  border-top: 1px solid #2a2a3e;
+  color: #e8e8e8;
+}
+
+.outline-editor__header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.outline-editor__edit-btn {
+  width: 100%;
+  padding: 10px 16px;
+  background: #5c7cfa;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.outline-editor__edit-btn:hover:not(:disabled) {
+  background: #4c6ce8;
+}
+
+.outline-editor__edit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.outline-editor__status {
+  display: flex;
+  align-items: center;
+}
+
+.outline-editor__status-text {
+  font-size: 12px;
+  color: #999;
+}
+
+.outline-editor__status-text--empty {
+  font-style: italic;
+}
+
+.outline-editor__loading {
+  padding: 16px;
+  color: #999;
+  font-size: 13px;
+  text-align: center;
+}
+
+.outline-editor__references {
+  padding: 12px;
+  background: #16161e;
+  border-radius: 6px;
+  border: 1px solid #2a2a3e;
+}
+
+.outline-editor__references-title {
+  margin: 0 0 12px 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #e8e8e8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.outline-editor__references-empty {
+  margin: 0;
+  font-size: 13px;
+  color: #666;
+  font-style: italic;
+}
+
+.outline-editor__reference-group {
+  margin-bottom: 12px;
+}
+
+.outline-editor__reference-group:last-child {
+  margin-bottom: 0;
+}
+
+.outline-editor__reference-label {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.outline-editor__reference-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.outline-editor__reference-chip {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.outline-editor__reference-chip:hover {
+  opacity: 0.8;
+}
+
+/* Character chips - blue (matching context viz) */
+.outline-editor__reference-chip--character {
+  background: rgba(92, 124, 250, 0.2);
+  color: #5c7cfa;
+  border: 1px solid rgba(92, 124, 250, 0.3);
+}
+
+/* Setting chips - green (matching context viz) */
+.outline-editor__reference-chip--setting {
+  background: rgba(81, 207, 102, 0.2);
+  color: #51cf66;
+  border: 1px solid rgba(81, 207, 102, 0.3);
+}
