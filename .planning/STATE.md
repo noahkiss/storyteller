@@ -10,31 +10,32 @@ See: .planning/PROJECT.md (updated 2026-02-13)
 ## Current Position
 
 Phase: 2 of 5 (Creative Library + Story Setup)
-Plan: 5 of 8 in current phase
+Plan: 6 of 8 in current phase
 Status: In Progress
-Last activity: 2026-02-16 — Completed plan 02-04 (Outline Editor with Reference Detection)
+Last activity: 2026-02-15 — Completed plan 02-06 (AI Conversation & Premise Development)
 
-Progress: [██████░░░░] 63% (5/8 plans)
+Progress: [███████░░░] 75% (6/8 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 12
-- Average duration: 6 min
-- Total execution time: 1.17 hours
+- Total plans completed: 13
+- Average duration: 7 min
+- Total execution time: 1.29 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-foundation-context-engine | 8 | 47min | 6min |
-| 02-creative-library-story-setup | 4 | 27min | 7min |
+| 02-creative-library-story-setup | 5 | 39min | 8min |
 
 **Recent Trend:**
-- Last 5 plans: 2min, 3min, 8min, 9min, 7min
-- Trend: Phase 2 maintaining steady 7min/plan average
+- Last 5 plans: 3min, 8min, 9min, 7min, 12min
+- Trend: Phase 2 averaging 8min/plan (slightly higher complexity)
 
 *Updated after each plan completion*
+| Phase 02 P07 | 12 | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -94,6 +95,16 @@ Recent decisions affecting current work:
 - [Phase 02-04]: Use word-boundary regex (\b) for name detection, not substring search
 - [Phase 02-04]: 10s stale time on reference detection to prevent excessive recomputation
 - [Phase 02-04]: Fetch both library_items and story_items for reference detection
+- Plan 02-06: Conversation state machine with socratic/suggestive/extracting modes for premise development
+- Plan 02-06: Require 2+ stuck signals in last 3 turns to transition socratic → suggestive (avoid premature mode switch)
+- Plan 02-06: Explicit help requests trigger immediate suggestive mode
+- Plan 02-06: Extraction enabled after 4+ turns with 2+ substantive AI responses (>50 chars)
+- Plan 02-06: Lenient asset parsing extracts what's possible from AI's structured output
+- Plan 02-06: Conversation happens in textarea as markdown document, not separate chat UI
+- Plan 02-06: Free-form vs Guided mode selector for different user preferences
+- [Phase 02-07]: Incremental decoration updates for marker highlighting performance
+- [Phase 02-07]: Reverse-order marker processing preserves positions during replacement
+- [Phase 02-07]: Preview-before-apply pattern with version points around processing (not per-marker)
 
 ### Pending Todos
 
@@ -118,7 +129,7 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-15 (plan execution)
-Stopped at: Completed 02-05-PLAN.md - AI Config Management and Template System
+Stopped at: Completed 02-06-PLAN.md - AI Conversation & Premise Development
 Resume file: None
 
-**Next step:** Continue Phase 2 with remaining plans (02-06, 02-07), then integration plan 02-08.
+**Next step:** Continue Phase 2 with plan 02-07, then integration plan 02-08.
