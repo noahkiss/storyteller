@@ -9,9 +9,13 @@ import { EnhancedTextarea } from './components/textarea/EnhancedTextarea'
 import { ContextVisualization } from './components/context-viz/ContextVisualization'
 import { SettingsPanel } from './components/settings/SettingsPanel'
 import { GenerationWorkspace } from './components/generation/GenerationWorkspace'
+import { CharacterList } from './components/library/CharacterList'
+import { SettingList } from './components/library/SettingList'
 import { useCompressionLog } from './hooks/use-compression-log'
 import { useGenerationStore } from './stores/generation-store'
 import { useUIStore } from './stores/ui-store'
+import { useLibraryStore } from './stores/library-store'
+import { useLibraryItem, useUpdateLibraryItem } from './hooks/use-library-items'
 
 const queryClient = new QueryClient()
 
@@ -56,8 +60,18 @@ function App() {
       content: <GenerationWorkspace />
     },
     {
-      id: 'settings',
+      id: 'characters',
+      label: 'Characters',
+      content: <CharacterList />
+    },
+    {
+      id: 'settings-library',
       label: 'Settings',
+      content: <SettingList />
+    },
+    {
+      id: 'settings',
+      label: 'App Settings',
       content: <SettingsPanel />
     }
   ]
@@ -68,9 +82,40 @@ function App() {
     const { events } = useCompressionLog();
     const { contextTiers, maxContextTokens, currentOutput } = useGenerationStore();
     const { activeTab } = useUIStore();
+    const { activeItemId } = useLibraryStore();
+    const { data: activeLibraryItem } = useLibraryItem(activeItemId);
+    const updateLibraryItem = useUpdateLibraryItem();
+
+    // Handle library item edits
+    const handleLibraryItemEdit = (newContent: string) => {
+      if (activeItemId) {
+        updateLibraryItem.mutate({ id: activeItemId, content: newContent });
+      }
+    };
+
+    // Characters or Settings tab: show selected library item in textarea
+    if ((activeTab === 'characters' || activeTab === 'settings-library') && activeItemId && activeLibraryItem) {
+      return (
+        <EnhancedTextarea
+          contentId={`library-${activeItemId}`}
+          externalValue={activeLibraryItem.content}
+          onEdit={handleLibraryItemEdit}
+          placeholder="Select a library item to edit..."
+        />
+      );
+    }
+
+    // Characters or Settings tab with no selection: show placeholder
+    if (activeTab === 'characters' || activeTab === 'settings-library') {
+      return (
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#999' }}>
+          Select a {activeTab === 'characters' ? 'character' : 'setting'} to edit
+        </div>
+      );
+    }
 
     if (activeTab === 'settings') {
-      // Settings tab: show system prompt editor
+      // App Settings tab: show system prompt editor
       return (
         <EnhancedTextarea
           contentId="system-prompt"

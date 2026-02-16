@@ -1,0 +1,80 @@
+.library-card {
+  background: #16161e;
+  border: 1px solid #2a2a3e;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.library-card:hover {
+  background: #1c1c2a;
+  border-color: #3a3a4e;
+}
+
+.library-card--active {
+  background: #1c1c2a;
+  border-color: #5c7cfa;
+  box-shadow: 0 0 0 1px #5c7cfa;
+}
+
+.library-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.library-card__name {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #e8e8e8;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.library-card__delete {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+
+.library-card__delete:hover {
+  color: #ff6b6b;
+}
+
+.library-card__metadata {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.library-card__badge {
+  display: inline-block;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+.library-card__badge--category {
+  background: #2a2a3e;
+  color: #5c7cfa;
+}
+
+.library-card__badge--tag {
+  background: #2a2a3e;
+  color: #999;
+}

@@ -43,9 +43,9 @@ export function useLibraryItems(type: LibraryItemType) {
  * Disabled when id is null.
  */
 export function useLibraryItem(id: string | null) {
-  return useQuery({
+  return useQuery<LibraryItem | null>({
     queryKey: ['library-item', id],
-    queryFn: async () => {
+    queryFn: async (): Promise<LibraryItem | null> => {
       if (!id) return null;
 
       const db = await getDatabase();
