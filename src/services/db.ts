@@ -93,8 +93,80 @@ export async function initDatabase(): Promise<void> {
           created_at INTEGER NOT NULL
         );
 
+        CREATE TABLE IF NOT EXISTS library_items (
+          id TEXT PRIMARY KEY,
+          type TEXT NOT NULL CHECK(type IN ('character', 'setting', 'theme')),
+          name TEXT NOT NULL,
+          category TEXT DEFAULT '',
+          tags TEXT DEFAULT '[]',
+          content TEXT NOT NULL,
+          version INTEGER DEFAULT 1,
+          created_at INTEGER NOT NULL,
+          updated_at INTEGER NOT NULL
+        );
+
+        CREATE TABLE IF NOT EXISTS stories (
+          id TEXT PRIMARY KEY,
+          title TEXT NOT NULL,
+          premise TEXT DEFAULT '',
+          status TEXT DEFAULT 'setup' CHECK(status IN ('setup', 'outlining', 'writing', 'complete')),
+          ai_config_id TEXT,
+          created_at INTEGER NOT NULL,
+          updated_at INTEGER NOT NULL
+        );
+
+        CREATE TABLE IF NOT EXISTS story_items (
+          id TEXT PRIMARY KEY,
+          story_id TEXT NOT NULL,
+          library_id TEXT NOT NULL,
+          forked_from_version INTEGER NOT NULL,
+          content TEXT NOT NULL,
+          has_local_changes INTEGER DEFAULT 0,
+          base_content TEXT,
+          created_at INTEGER NOT NULL,
+          updated_at INTEGER NOT NULL,
+          FOREIGN KEY (story_id) REFERENCES stories(id),
+          FOREIGN KEY (library_id) REFERENCES library_items(id)
+        );
+
+        CREATE TABLE IF NOT EXISTS outlines (
+          id TEXT PRIMARY KEY,
+          story_id TEXT NOT NULL UNIQUE,
+          content TEXT NOT NULL,
+          created_at INTEGER NOT NULL,
+          updated_at INTEGER NOT NULL,
+          FOREIGN KEY (story_id) REFERENCES stories(id)
+        );
+
+        CREATE TABLE IF NOT EXISTS ai_configs (
+          id TEXT PRIMARY KEY,
+          name TEXT NOT NULL,
+          content TEXT NOT NULL,
+          is_global INTEGER DEFAULT 0,
+          story_id TEXT,
+          created_at INTEGER NOT NULL,
+          updated_at INTEGER NOT NULL,
+          FOREIGN KEY (story_id) REFERENCES stories(id)
+        );
+
+        CREATE TABLE IF NOT EXISTS templates (
+          id TEXT PRIMARY KEY,
+          type TEXT NOT NULL CHECK(type IN ('character', 'setting', 'theme', 'outline', 'ai_config')),
+          name TEXT NOT NULL,
+          content TEXT NOT NULL,
+          is_builtin INTEGER DEFAULT 0,
+          created_at INTEGER NOT NULL,
+          updated_at INTEGER NOT NULL
+        );
+
         CREATE INDEX IF NOT EXISTS idx_versions_content_id ON versions(content_id);
         CREATE INDEX IF NOT EXISTS idx_generations_created_at ON generations(created_at);
+        CREATE INDEX IF NOT EXISTS idx_library_items_type ON library_items(type);
+        CREATE INDEX IF NOT EXISTS idx_story_items_story ON story_items(story_id);
+        CREATE INDEX IF NOT EXISTS idx_story_items_library ON story_items(library_id);
+        CREATE INDEX IF NOT EXISTS idx_outlines_story ON outlines(story_id);
+        CREATE INDEX IF NOT EXISTS idx_ai_configs_story ON ai_configs(story_id);
+        CREATE INDEX IF NOT EXISTS idx_templates_type ON templates(type);
       `);
 
       console.log('[DB] Schema tables created');
@@ -110,6 +182,78 @@ export async function initDatabase(): Promise<void> {
             ('Precise', 0.3, 2048, 0.8, 0.5, 0.5, 1);
         `);
         console.log('[DB] Built-in presets seeded');
+      }
+
+      // Seed built-in templates if they don't exist
+      const templateCount = dbInstance.selectValue('SELECT COUNT(*) FROM templates WHERE is_builtin = 1');
+      if (templateCount === 0) {
+        const now = Date.now();
+        const characterTemplate = `---
+name: ""
+role: ""
+category: Named
+tags: []
+traits: []
+relationships: []
+appearance: ""
+voice: ""
+backstory: ""
+arc_notes: ""
+---
+
+# Character Notes
+
+(Write additional notes, backstory details, or scene ideas here)`;
+
+        const settingTemplate = `---
+name: ""
+type: ""
+atmosphere: ""
+sensory_details: ""
+character_associations: []
+---
+
+# Setting Notes
+
+(Write additional details, history, or mood descriptions here)`;
+
+        dbInstance.exec(`
+          INSERT INTO templates (id, type, name, content, is_builtin, created_at, updated_at)
+          VALUES
+            ('tpl_character_default', 'character', 'Default Character', ?, 1, ?, ?),
+            ('tpl_setting_default', 'setting', 'Default Setting', ?, 1, ?, ?);
+        `, [characterTemplate, now, now, settingTemplate, now, now]);
+        console.log('[DB] Built-in templates seeded');
+      }
+
+      // Seed default global AI config if none exists
+      const aiConfigCount = dbInstance.selectValue('SELECT COUNT(*) FROM ai_configs WHERE is_global = 1');
+      if (aiConfigCount === 0) {
+        const now = Date.now();
+        const defaultAIConfig = `---
+name: "Default"
+stage: "general"
+---
+
+# AI Writing Style
+
+Write in a natural, literary style. Focus on character voice and emotional authenticity. Show rather than tell. Keep dialogue grounded and realistic.
+
+## Tone
+- Intimate and observational
+- Character-driven
+- Slice-of-life warmth
+
+## Avoid
+- Purple prose
+- Info-dumping
+- Breaking character voice`;
+
+        dbInstance.exec(`
+          INSERT INTO ai_configs (id, name, content, is_global, story_id, created_at, updated_at)
+          VALUES ('config_global_default', 'Default', ?, 1, NULL, ?, ?);
+        `, [defaultAIConfig, now, now]);
+        console.log('[DB] Default AI config seeded');
       }
 
       dbInitialized = true;
