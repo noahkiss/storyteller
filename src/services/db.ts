@@ -217,12 +217,16 @@ character_associations: []
 
 (Write additional details, history, or mood descriptions here)`;
 
-        dbInstance.exec(`
-          INSERT INTO templates (id, type, name, content, is_builtin, created_at, updated_at)
-          VALUES
-            ('tpl_character_default', 'character', 'Default Character', ?, 1, ?, ?),
-            ('tpl_setting_default', 'setting', 'Default Setting', ?, 1, ?, ?);
-        `, [characterTemplate, now, now, settingTemplate, now, now]);
+        dbInstance.exec(
+          `INSERT INTO templates (id, type, name, content, is_builtin, created_at, updated_at)
+           VALUES ('tpl_character_default', 'character', 'Default Character', ?, 1, ?, ?)`,
+          { bind: [characterTemplate, now, now] }
+        );
+        dbInstance.exec(
+          `INSERT INTO templates (id, type, name, content, is_builtin, created_at, updated_at)
+           VALUES ('tpl_setting_default', 'setting', 'Default Setting', ?, 1, ?, ?)`,
+          { bind: [settingTemplate, now, now] }
+        );
         console.log('[DB] Built-in templates seeded');
       }
 
@@ -249,10 +253,11 @@ Write in a natural, literary style. Focus on character voice and emotional authe
 - Info-dumping
 - Breaking character voice`;
 
-        dbInstance.exec(`
-          INSERT INTO ai_configs (id, name, content, is_global, story_id, created_at, updated_at)
-          VALUES ('config_global_default', 'Default', ?, 1, NULL, ?, ?);
-        `, [defaultAIConfig, now, now]);
+        dbInstance.exec(
+          `INSERT INTO ai_configs (id, name, content, is_global, story_id, created_at, updated_at)
+           VALUES ('config_global_default', 'Default', ?, 1, NULL, ?, ?)`,
+          { bind: [defaultAIConfig, now, now] }
+        );
         console.log('[DB] Default AI config seeded');
       }
 
