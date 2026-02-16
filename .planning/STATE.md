@@ -10,29 +10,29 @@ See: .planning/PROJECT.md (updated 2026-02-13)
 ## Current Position
 
 Phase: 2 of 5 (Creative Library + Story Setup)
-Plan: 3 of 7 in current phase
+Plan: 4 of 8 in current phase (02-04 deferred, 02-05 complete)
 Status: In Progress
-Last activity: 2026-02-16 — Completed plan 02-03 (Story Management with Fork-on-Use)
+Last activity: 2026-02-15 — Completed plan 02-05 (AI Config Management and Template System)
 
-Progress: [████░░░░░░] 43% (3/7 plans)
+Progress: [█████░░░░░] 50% (4/8 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 11
+- Total plans completed: 12
 - Average duration: 6 min
-- Total execution time: 1.06 hours
+- Total execution time: 1.17 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-foundation-context-engine | 8 | 47min | 6min |
-| 02-creative-library-story-setup | 3 | 20min | 7min |
+| 02-creative-library-story-setup | 4 | 27min | 7min |
 
 **Recent Trend:**
-- Last 5 plans: 1min, 2min, 3min, 8min, 9min
-- Trend: Phase 2 complexity increasing (CRUD + UI), averaging 7min/plan
+- Last 5 plans: 2min, 3min, 8min, 9min, 7min
+- Trend: Phase 2 maintaining steady 7min/plan average
 
 *Updated after each plan completion*
 
@@ -87,6 +87,13 @@ Recent decisions affecting current work:
 - Plan 02-03: Log warning when merge conflict rate exceeds 50%
 - Plan 02-03: Store base_content in story_items for three-way merge ancestor
 - Plan 02-03: Defer App.tsx tab integration to Plan 02-08 to avoid parallel plan conflicts
+- Plan 02-05: Custom events for content loading (window.dispatchEvent pattern) to decouple components from parent App
+- Plan 02-05: Type-grouped template display for better organization as template counts grow
+- Plan 02-05: Inline creation UI for configs/templates reduces interaction cost vs modal approach
+- [Phase 02-04]: Filter library items < 3 chars to avoid false positive matches
+- [Phase 02-04]: Use word-boundary regex (\b) for name detection, not substring search
+- [Phase 02-04]: 10s stale time on reference detection to prevent excessive recomputation
+- [Phase 02-04]: Fetch both library_items and story_items for reference detection
 
 ### Pending Todos
 
@@ -110,8 +117,8 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-02-16 (plan execution)
-Stopped at: Completed 02-03-PLAN.md - Story Management with Fork-on-Use
+Last session: 2026-02-15 (plan execution)
+Stopped at: Completed 02-05-PLAN.md - AI Config Management and Template System
 Resume file: None
 
-**Next step:** Continue Phase 2 with remaining plans (02-04 through 02-07), then integration plan 02-08.
+**Next step:** Continue Phase 2 with remaining plans (02-06, 02-07), then integration plan 02-08.
