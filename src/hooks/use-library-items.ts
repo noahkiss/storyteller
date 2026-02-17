@@ -12,27 +12,24 @@ export function useLibraryItems(type: LibraryItemType) {
     queryKey: ['library-items', type],
     queryFn: async () => {
       const db = await getDatabase();
-      const items: LibraryItem[] = [];
-
-      db.exec({
+      const rows = db.exec({
         sql: 'SELECT * FROM library_items WHERE type = ? ORDER BY updated_at DESC',
         bind: [type],
-        callback: (row: any) => {
-          items.push({
-            id: row.id,
-            type: row.type,
-            name: row.name,
-            category: row.category,
-            tags: JSON.parse(row.tags || '[]'),
-            content: row.content,
-            version: row.version,
-            created_at: row.created_at,
-            updated_at: row.updated_at,
-          });
-        },
-      });
+        returnValue: 'resultRows',
+        rowMode: 'object',
+      }) as any[];
 
-      return items;
+      return (rows || []).map((row: any) => ({
+        id: row.id,
+        type: row.type,
+        name: row.name,
+        category: row.category,
+        tags: JSON.parse(row.tags || '[]'),
+        content: row.content,
+        version: row.version,
+        created_at: row.created_at,
+        updated_at: row.updated_at,
+      }));
     },
     refetchInterval: 5000, // Poll every 5s
   });
@@ -49,27 +46,26 @@ export function useLibraryItem(id: string | null) {
       if (!id) return null;
 
       const db = await getDatabase();
-      let item: LibraryItem | null = null;
-
-      db.exec({
+      const rows = db.exec({
         sql: 'SELECT * FROM library_items WHERE id = ?',
         bind: [id],
-        callback: (row: any) => {
-          item = {
-            id: row.id,
-            type: row.type,
-            name: row.name,
-            category: row.category,
-            tags: JSON.parse(row.tags || '[]'),
-            content: row.content,
-            version: row.version,
-            created_at: row.created_at,
-            updated_at: row.updated_at,
-          };
-        },
-      });
+        returnValue: 'resultRows',
+        rowMode: 'object',
+      }) as any[];
 
-      return item;
+      if (!rows || rows.length === 0) return null;
+      const row = rows[0];
+      return {
+        id: row.id,
+        type: row.type,
+        name: row.name,
+        category: row.category,
+        tags: JSON.parse(row.tags || '[]'),
+        content: row.content,
+        version: row.version,
+        created_at: row.created_at,
+        updated_at: row.updated_at,
+      } as LibraryItem;
     },
     enabled: id !== null,
   });
@@ -87,15 +83,14 @@ export function useCreateLibraryItem() {
       const db = await getDatabase();
 
       // Fetch the default template for this type
-      let templateContent = '';
-      db.exec({
+      const templateRows = db.exec({
         sql: 'SELECT content FROM templates WHERE type = ? AND is_builtin = 1 LIMIT 1',
         bind: [type],
-        callback: (row: any) => {
-          templateContent = row.content;
-        },
-      });
+        returnValue: 'resultRows',
+        rowMode: 'object',
+      }) as any[];
 
+      const templateContent = templateRows?.[0]?.content || '';
       if (!templateContent) {
         throw new Error(`No template found for type: ${type}`);
       }

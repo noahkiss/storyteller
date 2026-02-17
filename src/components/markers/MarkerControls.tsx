@@ -39,26 +39,23 @@ export function MarkerControls({
     queryKey: ['all-library-items'],
     queryFn: async () => {
       const db = await getDatabase();
-      const items: LibraryItem[] = [];
-
-      db.exec({
+      const rows = db.exec({
         sql: 'SELECT * FROM library_items ORDER BY name',
-        callback: (row: any) => {
-          items.push({
-            id: row.id,
-            type: row.type,
-            name: row.name,
-            category: row.category,
-            tags: JSON.parse(row.tags || '[]'),
-            content: row.content,
-            version: row.version,
-            created_at: row.created_at,
-            updated_at: row.updated_at,
-          });
-        },
-      });
+        returnValue: 'resultRows',
+        rowMode: 'object',
+      }) as any[];
 
-      return items;
+      return (rows || []).map((row: any) => ({
+        id: row.id,
+        type: row.type,
+        name: row.name,
+        category: row.category,
+        tags: JSON.parse(row.tags || '[]'),
+        content: row.content,
+        version: row.version,
+        created_at: row.created_at,
+        updated_at: row.updated_at,
+      }));
     },
     refetchInterval: 5000,
   });
@@ -68,26 +65,23 @@ export function MarkerControls({
     queryKey: ['all-story-items'],
     queryFn: async () => {
       const db = await getDatabase();
-      const items: StoryItem[] = [];
-
-      db.exec({
+      const rows = db.exec({
         sql: 'SELECT * FROM story_items',
-        callback: (row: any) => {
-          items.push({
-            id: row.id,
-            story_id: row.story_id,
-            library_id: row.library_id,
-            forked_from_version: row.forked_from_version,
-            content: row.content,
-            has_local_changes: Boolean(row.has_local_changes),
-            base_content: row.base_content,
-            created_at: row.created_at,
-            updated_at: row.updated_at,
-          });
-        },
-      });
+        returnValue: 'resultRows',
+        rowMode: 'object',
+      }) as any[];
 
-      return items;
+      return (rows || []).map((row: any) => ({
+        id: row.id,
+        story_id: row.story_id,
+        library_id: row.library_id,
+        forked_from_version: row.forked_from_version,
+        content: row.content,
+        has_local_changes: Boolean(row.has_local_changes),
+        base_content: row.base_content,
+        created_at: row.created_at,
+        updated_at: row.updated_at,
+      }));
     },
     refetchInterval: 5000,
   });
